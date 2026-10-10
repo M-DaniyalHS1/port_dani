@@ -1,0 +1,34 @@
+// Biography based only on Daniyal's supplied project descriptions.
+export const aboutDraft = [
+  'I’m Daniyal. I build full-stack products and AI-powered applications, connecting useful interfaces with the systems behind them.',
+  'My projects range from an AI-assisted blogging platform to a Python voice assistant and a digital textbook with a content-grounded tutor. I work with React, FastAPI, databases, and agent frameworks to bring these ideas together.',
+];
+
+// Public email supplied by Daniyal; update the label and mailto URL together.
+export const profile = {
+  name: 'Daniyal',
+  about: aboutDraft,
+  contact: { label: 'Email', href: 'mailto:m.daniyal93337@gmail.com' },
+  socials: [],
+};
+
+export const expertise = [
+  {
+    id: 'backend', title: 'Backend systems', symbol: '01',
+    description: 'APIs, application data, and service integrations behind complete products.',
+    technologies: ['Python', 'FastAPI', 'PostgreSQL', 'Supabase'],
+    evidence: 'Dani Blogs / Physical AI textbook',
+  },
+  {
+    id: 'full-stack', title: 'Full-stack products', symbol: '02',
+    description: 'Connected interfaces and services for publishing, interaction, and learning.',
+    technologies: ['React', 'Docusaurus', 'Vercel', 'FastAPI Cloud'],
+    evidence: 'Dani Blogs / Physical AI textbook',
+  },
+  {
+    id: 'ai', title: 'AI & voice interfaces', symbol: '03',
+    description: 'Retrieval-grounded chat, AI writing assistance, and spoken interactions.',
+    technologies: ['OpenAI Agents SDK', 'Gemini', 'Groq', 'Qdrant', 'Speech Recognition', 'Edge TTS'],
+    evidence: 'Jarvis / Dani Blogs / Physical AI textbook',
+  },
+];
