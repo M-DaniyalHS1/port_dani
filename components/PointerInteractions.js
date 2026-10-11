@@ -13,6 +13,10 @@ export default function PointerInteractions() {
     label.textContent = 'Inspect ↗';
     cursor.append(shape, label);
     document.body.append(cursor);
+    const dot = document.createElement('div');
+    dot.className = 'interaction-dot';
+    dot.setAttribute('aria-hidden', 'true');
+    document.body.append(dot);
     const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
     const modified = new Set();
     let magnet = null, card = null, frame = 0;
@@ -28,13 +32,14 @@ export default function PointerInteractions() {
     function reset() {
       cancelAnimationFrame(frame); frame = 0; initialized = false;
       cursor.dataset.visible = 'false';
+      dot.dataset.visible = 'false';
       delete document.documentElement.dataset.pointerInteractions;
       card?.removeAttribute('data-targeting'); card = null;
       modified.forEach(release); magnet = null;
     }
     function render(now) {
       frame = 0;
-      const step = 1 - Math.exp(-20 * Math.min((now - previous) / 1000, .05));
+      const step = 1 - Math.exp(-8 * Math.min((now - previous) / 1000, .05));
       previous = now;
       x += (targetX - x) * step; y += (targetY - y) * step;
       cursor.style.transform = `translate3d(${x}px,${y}px,0)`;
@@ -50,10 +55,12 @@ export default function PointerInteractions() {
       if (magnet !== nextMagnet) { release(magnet); magnet = nextMagnet; }
       card?.setAttribute('data-targeting', 'true');
       document.documentElement.dataset.pointerInteractions = 'true';
-      cursor.dataset.mode = 'target';
+      cursor.dataset.mode = card || interactive ? 'active' : 'default';
       cursor.dataset.inspect = String(!!card && !interactive);
       cursor.dataset.visible = 'true';
+      dot.dataset.visible = 'true';
       targetX = event.clientX; targetY = event.clientY;
+      dot.style.transform = `translate3d(${targetX}px,${targetY}px,0)`;
       if (!initialized) { x = targetX; y = targetY; initialized = true; }
       if (magnet) {
         const rect = magnet.getBoundingClientRect();
@@ -75,7 +82,7 @@ export default function PointerInteractions() {
     finePointer.addEventListener('change', reset);
     const unsubscribe = subscribeMotion(reset);
     return () => {
-      reset(); cursor.remove(); unsubscribe();
+      reset(); cursor.remove(); dot.remove(); unsubscribe();
       window.removeEventListener('pointermove', move);
       window.removeEventListener('blur', reset);
       window.removeEventListener('scroll', reset);
