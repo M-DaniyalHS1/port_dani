@@ -87,7 +87,14 @@ html[data-motion="off"] .hero-tagline-line > span { background: none; color: var
 .hero .blueprint-portrait { right: 0; width: 48%; height: auto; bottom: 0; display: block; pointer-events: auto; }
 .portrait-trigger { position: relative; display: block; width: 100%; padding: 0; border: 0; background: transparent; color: var(--text); cursor: crosshair; --blueprint-edge: 55%; }
 .blueprint-portrait .portrait-image { width: 100%; height: auto; max-height: none; }
-.portrait-blueprint { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; mask-image: linear-gradient(100deg,transparent calc(var(--blueprint-edge) - 4%),#000 calc(var(--blueprint-edge) + 4%)); -webkit-mask-image: linear-gradient(100deg,transparent calc(var(--blueprint-edge) - 4%),#000 calc(var(--blueprint-edge) + 4%)); transition: opacity .45s ease; pointer-events: none; }
+.portrait-blueprint { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; mask-image: radial-gradient(circle clamp(90px,10vw,160px) at var(--reveal-x,-200px) var(--reveal-y,-200px),#000 30%,transparent 100%); transition: opacity .55s ease; pointer-events: none; }
+.blueprint-portrait[data-locked="true"] .portrait-blueprint { mask-image: none; }
+.portrait-reveal-cursor { position: absolute; left: var(--reveal-x,-200px); top: var(--reveal-y,-200px); width: 34px; height: 34px; translate: -50% -50%; border: 1px solid #ffbd7699; border-radius: 50%; opacity: 0; pointer-events: none; transition: opacity .2s; }
+.portrait-reveal-cursor::after { content: ''; position: absolute; inset: 14px; border-radius: 50%; background: #ffd6a0; }
+.blueprint-portrait[data-hovered="true"] .portrait-reveal-cursor { opacity: 1; }
+@media (hover:hover) and (pointer:fine) { .blueprint-portrait[data-hovered="true"] .portrait-trigger { cursor: none; } }
+@media (hover:none),(prefers-reduced-motion:reduce) { .portrait-reveal-cursor { display: none; } }
+html[data-motion="off"] .portrait-reveal-cursor { display: none; }
 .blueprint-portrait[data-blueprint="true"] .portrait-blueprint { opacity: 1; }
 .blueprint-annotations { position: absolute; right: 5%; top: 22%; display: grid; gap: clamp(24px,4vw,60px); opacity: 0; transform: translateX(12px); transition: opacity .35s,transform .35s; pointer-events: none; }
 .blueprint-portrait[data-blueprint="true"] .blueprint-annotations { opacity: 1; transform: none; }
