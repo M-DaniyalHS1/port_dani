@@ -8,7 +8,10 @@ export default function HeroSection() {
       <div className="hero-copy">
         <p className="eyebrow">BACKEND / FULL-STACK / AGENTIC AI</p>
         <h1 id="hero-heading">DANIY<span className="name-accent">AL</span></h1>
-        <h2>Building systems.<br />Connecting intelligence.</h2>
+        <h2 className="hero-tagline">
+          <span className="hero-tagline-line"><span>Building systems.</span></span>
+          <span className="hero-tagline-line"><span>Connecting intelligence.</span></span>
+        </h2>
         <p className="supporting supporting-animated">
           <span className="supporting-phrase">Reliable backends.</span>{' '}
           <span className="supporting-phrase">Complete products.</span>{' '}
