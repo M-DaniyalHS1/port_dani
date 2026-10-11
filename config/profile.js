@@ -9,7 +9,10 @@ export const profile = {
   name: 'Daniyal',
   about: aboutDraft,
   contact: { label: 'Email', href: 'mailto:m.daniyal93337@gmail.com' },
-  socials: [],
+  socials: [
+    { label: 'LinkedIn', icon: 'linkedin', href: 'https://www.linkedin.com/in/m-daniyal-aslam-hs1/' },
+    { label: 'GitHub', icon: 'github', href: 'https://github.com/M-DaniyalHS1' },
+  ],
 };
 
 export const expertise = [

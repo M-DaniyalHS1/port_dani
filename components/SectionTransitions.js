@@ -4,48 +4,26 @@ import { useEffect } from 'react';
 
 export default function SectionTransitions() {
   useEffect(() => {
-    const sections = [...document.querySelectorAll('main > section[id]')];
-    const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
-    let observer;
-
-    function sync() {
-      observer?.disconnect();
-      sections.forEach((section) => section.classList.remove('section-reveal', 'section-visible'));
-      if (preference.matches || !('IntersectionObserver' in window)) return;
-
-      observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('section-visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
-
-      sections.forEach((section) => {
-        // Keep current and previously viewed sections visible, including anchor targets.
-        if (section.getBoundingClientRect().top < window.innerHeight) return;
-        section.classList.add('section-reveal');
-        observer.observe(section);
+    const sections = [...document.querySelectorAll('main > section')];
+    const targets = [...sections, ...document.querySelectorAll('.project-card, .expertise-row, .about-copy p')];
+    if (!('IntersectionObserver' in window)) return;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(({ target, isIntersecting }) => {
+        if (target.matches('section')) target.dataset.inView = String(isIntersecting);
+        if (isIntersecting) target.dataset.revealed = 'true';
       });
-    }
+    }, { rootMargin: '0px 0px -40px 0px', threshold: 0 });
+    targets.forEach((target) => observer.observe(target));
 
-    function revealFocusedSection(event) {
-      const section = event.target.closest?.('.section-reveal');
-      if (section) {
-        section.classList.add('section-visible');
-        observer?.unobserve(section);
-      }
+    function revealFocusedTarget(event) {
+      const target = event.target.closest?.('.project-card, .expertise-row, section');
+      if (target) target.dataset.revealed = 'true';
     }
-
-    sync();
-    preference.addEventListener('change', sync);
-    document.addEventListener('focusin', revealFocusedSection);
+    document.addEventListener('focusin', revealFocusedTarget);
     return () => {
-      observer?.disconnect();
-      preference.removeEventListener('change', sync);
-      document.removeEventListener('focusin', revealFocusedSection);
-      sections.forEach((section) => section.classList.remove('section-reveal', 'section-visible'));
+      observer.disconnect();
+      document.removeEventListener('focusin', revealFocusedTarget);
+      targets.forEach((target) => { delete target.dataset.inView; delete target.dataset.revealed; });
     };
   }, []);
 

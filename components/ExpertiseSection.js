@@ -5,7 +5,7 @@ export default function ExpertiseSection() {
     <section id="expertise" className="portfolio-section expertise-section" aria-labelledby="expertise-heading">
       <header className="section-header">
         <p className="eyebrow">EXPERTISE</p>
-        <h2 id="expertise-heading">From the interface<br />to the intelligence<span className="name-accent">.</span></h2>
+        <h2 id="expertise-heading"><span className="expertise-heading-line">From the interface</span><span className="expertise-heading-line">to the <span className="expertise-shine">intelligence</span><span className="name-accent">.</span></span></h2>
       </header>
       <div className="expertise-list">
         {expertise.map((item) => (

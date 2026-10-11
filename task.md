@@ -114,6 +114,34 @@ Deferred at Daniyal's request to keep the portfolio local. These items apply onl
 
 ## Scope notes
 
+- [x] Add the supplied Jarvis MP4 with its existing image as the thumbnail, native controls, inline playback, and no preload/autoplay. Pass build/ESLint, verify source-copy integrity and poster markup, and verify HTTP 206 video streaming plus HTTP 200 thumbnail.
+- [ ] Visually verify Jarvis video playback, mobile controls, and fullscreen when browser tooling is restored; captions have not been supplied.
+- [x] Compact project cards to short summaries with independently expandable Read more/Read less details; preserve full descriptions, features, technologies, and case studies. Pass build/ESLint and verify three initially collapsed disclosures in generated HTML.
+- [ ] Visually check the compact cards and disclosure interactions on desktop/mobile when browser tooling is restored.
+- [x] Remove copy-email and the footer identity tagline; give Email the same SVG glass badge and hover/focus effects as LinkedIn/GitHub. Pass build/ESLint and verify the rendered removals and mailto link.
+- [x] Add the three supplied project previews, with Jarvis identified as artwork, and expandable project case studies based on supplied facts.
+- [x] Add sticky glass navigation with active-section indication and suitable anchor offsets.
+- [x] Change card, expertise, and About entrances to individual one-time viewport reveals.
+- [x] Add desktop card spotlights, locally hosted Space Grotesk, copy-email feedback, and a persistent motion control with reduced-motion support.
+- [x] Improve selected-text contrast and guard the neural visual when IntersectionObserver is unavailable.
+- [x] Pass production build and motion-control checks covering persistence, reduced motion, blocked storage, and listener cleanup.
+- [x] Pass final ESLint, verify new controls and top anchor in built HTML, and verify HTTP 200 for all three optimized project images.
+- [ ] Visually check the upgraded sticky navigation, card images, case studies, clipboard, and motion controls on desktop/mobile when browser tooling is restored.
+- [x] Add LinkedIn/GitHub SVG icons with glass badges, hover/focus lift and glow, a brief ring pulse, and reduced-motion/forced-color fallbacks; pass build and ESLint.
+- [ ] Visually verify social icon interactions when browser tooling is restored.
+- [x] Add Daniyal's LinkedIn and GitHub profiles to Contact; verify both links in built HTML and pass build/ESLint.
+- [x] Add staggered word-by-word fade and rise transitions to the About description, with readable static text and reduced-motion support.
+- [x] Pass production build and ESLint for About description transitions.
+- [ ] Visually verify the About word transitions when browser tooling is restored.
+- [x] Add translucent glass surfaces, backdrop blur, luminous borders, and restrained hover elevation to Selected Work cards, with transparency and forced-color fallbacks.
+- [x] Pass production build and ESLint for the project card glass effects.
+- [ ] Visually verify the glass cards on desktop/mobile when browser tooling is restored.
+- [x] Extend viewport-triggered text highlights/reveals to Work, About, and Contact; add card, link, navigation, and footer hover feedback.
+- [x] Pass production build and ESLint for effects across all sections.
+- [ ] Visually verify the latest all-section animation timing when browser tooling is restored.
+- [x] Add viewport-triggered Expertise text/row reveals, heading shimmer, and title/tag hover effects with reduced-motion and forced-color fallbacks.
+- [x] Pass production build and ESLint for Expertise effects.
+- [ ] Visually verify Expertise animation timing when browser tooling is restored.
 - [x] Add native smooth section scrolling and one-time section entrance effects with reduced-motion and keyboard-focus safeguards.
 - [x] Pass production build and ESLint after the section transition update.
 - [ ] Visually verify scroll timing and section entrance motion when browser tooling is restored.
@@ -125,6 +153,6 @@ Deferred at Daniyal's request to keep the portfolio local. These items apply onl
 - Desktop (1440px), tablet (820px), and mobile (320px) layouts verified. Reduced-motion rules reviewed; browser preference emulation remains pending.
 - Do not invent project achievements, contact details, or résumé links.
 - Keep unavailable destinations explicitly inactive until implemented.
-- Deployment is intentionally deferred. Optional project screenshots and Jarvis/textbook links have not been supplied. Browser runtime initialization remains unavailable; visual and preference-enabled reduced-motion checks remain unchecked.
+- Deployment is intentionally deferred. Three project images have been supplied and added; Jarvis/textbook links remain unavailable. Browser runtime initialization remains unavailable; visual and preference-enabled reduced-motion checks remain unchecked.
 - Python remains managed by uv; frontend tooling remains managed by npm.
 

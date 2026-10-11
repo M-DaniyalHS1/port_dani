@@ -1,6 +1,9 @@
 import './globals.css';
+import localFont from 'next/font/local';
 import SystemVisual from '../components/SystemVisual';
 import { siteUrl, siteTitle, siteDescription } from '../config/site';
+
+const displayFont = localFont({ src: './fonts/SpaceGrotesk.ttf', weight: '300 700', variable: '--font-display', display: 'swap' });
 
 export const metadata = {
   metadataBase: siteUrl ? new URL(siteUrl) : undefined,
@@ -13,14 +16,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={displayFont.variable}>
       <body>
         <div className="portfolio-shell">
           <div className="site-atmosphere" aria-hidden="true">
             <div className="site-background" />
             <SystemVisual />
           </div>
-          <div className="site-content">{children}</div>
+          <div id="top" className="site-content">{children}</div>
         </div>
       </body>
     </html>

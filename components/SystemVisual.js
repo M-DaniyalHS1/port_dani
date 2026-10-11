@@ -28,15 +28,15 @@ export default function SystemVisual() {
     function syncMotion() {
       visual.dataset.paused = String(!visible || document.hidden);
     }
-    const observer = new IntersectionObserver(([entry]) => {
+    const observer = 'IntersectionObserver' in window ? new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting;
       syncMotion();
-    });
-    observer.observe(visual);
+    }) : null;
+    observer?.observe(visual);
     document.addEventListener('visibilitychange', syncMotion);
     syncMotion();
     return () => {
-      observer.disconnect();
+      observer?.disconnect();
       document.removeEventListener('visibilitychange', syncMotion);
     };
   }, []);

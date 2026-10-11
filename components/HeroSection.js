@@ -21,11 +21,8 @@ export default function HeroSection() {
         {!destinations.contact.href && <p className="destination-note">Contact destination coming soon.</p>}
       </div>
       <div className="hero-portrait">
-        <Image src="/daniyal-portrait.png" alt="Daniyal wearing glasses and a white shirt" width={1199} height={1312} sizes="(max-width: 1000px) 350px, 40vw" loading="eager" className="portrait-image" />
+        <Image src="/second_portrait.png" alt="Daniyal wearing glasses and a white shirt" width={1199} height={1312} sizes="(max-width: 1000px) 350px, 40vw" loading="eager" className="portrait-image" />
       </div>
-      <footer className="hero-footer">
-        {destinations.work.href ? <a href={destinations.work.href} className="scroll-cue">SCROLL TO EXPLORE <span aria-hidden="true">&#8595;</span></a> : <span className="scroll-cue">SCROLL TO EXPLORE <span aria-hidden="true">&#8595;</span></span>}
-      </footer>
     </section>
   );
 }

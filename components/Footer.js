@@ -1,5 +1,5 @@
-import { profile } from '../config/profile';
+import MotionToggle from './MotionToggle';
 
 export default function Footer() {
-  return <footer className="site-footer"><span>{profile.name} <span className="name-accent">/</span> Backend · Full-stack · Agentic AI</span><a href="#top">Back to top <span aria-hidden="true">↑</span></a></footer>;
+  return <footer className="site-footer"><MotionToggle /><a href="#top">Back to top <span aria-hidden="true">↑</span></a></footer>;
 }
