@@ -16,4 +16,10 @@ Use a Node version supported by the installed Next.js release. Run `npm ci`, `np
 
 ## Publication status
 
-Publication is deferred at Daniyal's request to keep the portfolio local. No deployment has been created. Hosting account and public domain can be supplied when publication is requested later.
+Published on 11 October 2026 at https://portdani.vercel.app.
+
+Vercel project: `mdaniyal93337-6659s-projects/port_dani`. The project is connected to `M-DaniyalHS1/port_dani` on GitHub. This first production deployment was uploaded from the current local workspace, including its uncommitted frontend changes. Commit and push those changes before relying on GitHub-triggered deployments to reproduce this version.
+
+`vercel.json` explicitly selects Next.js, `npm ci`, and `npm run build`. `.vercelignore` excludes the separate Python environment, local caches, and environment files from uploads. `.vercel/` contains local project linkage and is ignored by Git.
+
+To redeploy the local workspace, run `vercel deploy --prod` from the project root while signed in to the intended Vercel account. Production metadata uses `VERCEL_PROJECT_PRODUCTION_URL` automatically. The design comparison remains available at `/card-designs` and is marked noindex.

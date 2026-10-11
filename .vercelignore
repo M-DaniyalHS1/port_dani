@@ -1,0 +1,12 @@
+.git
+.next
+node_modules
+.venv
+__pycache__
+.env*
+!.env.example
+main.py
+pyproject.toml
+.python-version
+AGENTS.md
+task.md

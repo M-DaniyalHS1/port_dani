@@ -1,17 +1,17 @@
 import Image from 'next/image';
 import { projects } from '../config/projects';
 import ProjectCard from './ProjectCard';
+import ProjectCarousel from './ProjectCarousel';
 
 export default function WorkSection() {
   if (!projects.length) return null;
 
   return (
     <section id="work" className="work-section" aria-labelledby="work-heading">
-      <header className="work-header">
-        <p className="eyebrow">SELECTED WORK</p>
+      <ProjectCarousel names={projects.map((project) => project.name)} header={<header className="work-header">
+        <p className="eyebrow">04 / PROJECT MATRIX</p>
         <h2 id="work-heading">Systems into <span className="section-highlight">products</span><span className="name-accent">.</span></h2>
-      </header>
-      <div className="work-grid">
+      </header>}>
         {projects.map((project, index) => (
           <ProjectCard key={project.id} headingId={`project-${project.id}`}>
             {project.video ? (
@@ -23,7 +23,7 @@ export default function WorkSection() {
               </div>
             ) : project.image && (
               <div className="project-image">
-                <Image src={project.image.src} alt={project.image.alt} fill sizes="(max-width: 760px) 86vw, (max-width: 1100px) 43vw, (max-width: 1680px) 28vw, 475px" />
+                <Image src={project.image.src} alt={project.image.alt} fill sizes="(max-width: 760px) 86vw, 45vw" />
                 {project.image.caption && <span className="project-image-caption">{project.image.caption}</span>}
               </div>
             )}
@@ -67,7 +67,7 @@ export default function WorkSection() {
             </div>
           </ProjectCard>
         ))}
-      </div>
+      </ProjectCarousel>
     </section>
   );
 }

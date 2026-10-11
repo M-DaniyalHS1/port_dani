@@ -47,3 +47,5 @@ The footer motion toggle stores its preference locally and honors system reduced
 
 Jarvis uses the supplied MP4 in `public/projects/jarvis-demo.mp4`, configured through `project.video`. The player uses the existing Jarvis artwork as its poster, native controls, inline mobile playback, and `preload="none"`. Playback starts on user interaction. No caption file has been supplied. Live playback and fullscreen checks remain pending while browser tooling is unavailable.
 
+
+Project Matrix uses native page scrolling and a sticky project deck on screens at least 761px wide and 680px tall. ProjectCarousel advances through the real project count, exposes previous/next and direct project controls, removes inactive cards from keyboard navigation, and pauses hidden videos. Small screens, short viewports, disabled motion, and no JavaScript retain the normal project grid. Expanded details scroll inside the active card. The existing background, glass materials, and spotlight are preserved. Desktop progression, project inspection, mobile fallback, and mobile overflow were verified in the browser.
