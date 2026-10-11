@@ -25,13 +25,13 @@ export const expertise = [
   {
     id: 'full-stack', title: 'Full-stack products', symbol: '02',
     description: 'Connected interfaces and services for publishing, interaction, and learning.',
-    technologies: ['React', 'Docusaurus', 'Vercel', 'FastAPI Cloud'],
+    technologies: ['React','JavaScript','CSS', 'Docusaurus', 'Vercel', 'FastAPI Cloud'],
     evidence: 'Dani Blogs / Physical AI textbook',
   },
   {
-    id: 'ai', title: 'AI & voice interfaces', symbol: '03',
-    description: 'Retrieval-grounded chat, AI writing assistance, and spoken interactions.',
-    technologies: ['OpenAI Agents SDK', 'Gemini', 'Groq', 'Qdrant', 'Speech Recognition', 'Edge TTS'],
+    id: 'ai', title: 'AI Agent Developer', symbol: '03',
+    description: 'AI agent development, RAG chatbots, AI chatbots, and voice agents.',
+    technologies: ['OpenAI Agents SDK', 'TTS', 'STT', 'LLM Integration', 'Tool Calling', 'Agent Orchestration'],
     evidence: 'Jarvis / Dani Blogs / Physical AI textbook',
   },
 ];
