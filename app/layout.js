@@ -2,6 +2,7 @@ import './globals.css';
 import localFont from 'next/font/local';
 import SystemVisual from '../components/SystemVisual';
 import PointerInteractions from '../components/PointerInteractions';
+import SectionNavigation from '../components/SectionNavigation';
 import { siteUrl, siteTitle, siteDescription } from '../config/site';
 
 const displayFont = localFont({ src: './fonts/SpaceGrotesk.ttf', weight: '300 700', variable: '--font-display', display: 'swap' });
@@ -20,6 +21,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={displayFont.variable}>
       <body>
         <PointerInteractions />
+        <SectionNavigation />
         <div className="portfolio-shell">
           <div className="site-atmosphere" aria-hidden="true">
             <div className="site-background" />
