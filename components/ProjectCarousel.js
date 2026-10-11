@@ -13,7 +13,6 @@ export default function ProjectCarousel({ children, header, names }) {
 
   useEffect(() => {
     const element = track.current;
-    const viewport = window.matchMedia('(min-height: 680px)');
     let frame;
     let previous = -1;
     function update() {
@@ -41,7 +40,7 @@ export default function ProjectCarousel({ children, header, names }) {
     }
     function schedule() { if (!frame) frame = requestAnimationFrame(update); }
     function configure() {
-      const on = viewport.matches && !getMotionSnapshot() && panels.length > 1;
+      const on = !getMotionSnapshot() && panels.length > 1;
       element.dataset.carousel = String(on);
       setEnabled(on);
       step.current = window.innerHeight * .85;
@@ -52,7 +51,6 @@ export default function ProjectCarousel({ children, header, names }) {
     const resize = new ResizeObserver(configure);
     resize.observe(stage.current);
     const unsubscribe = subscribeMotion(configure);
-    viewport.addEventListener('change', configure);
     window.addEventListener('resize', configure);
     window.addEventListener('scroll', schedule, { passive: true });
     configure();
@@ -60,7 +58,6 @@ export default function ProjectCarousel({ children, header, names }) {
       cancelAnimationFrame(frame);
       resize.disconnect();
       unsubscribe();
-      viewport.removeEventListener('change', configure);
       window.removeEventListener('resize', configure);
       window.removeEventListener('scroll', schedule);
       delete element.dataset.carousel;

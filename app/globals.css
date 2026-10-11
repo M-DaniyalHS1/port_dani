@@ -154,6 +154,14 @@ h2 { font-size: clamp(27px,3.4vw,53px); line-height: 1.12; letter-spacing: -1.8p
 .matrix-pagination button span { display: block; width: 24px; height: 2px; background: var(--line); }
 .matrix-pagination button[aria-pressed="true"] { color: var(--amber); }
 .matrix-pagination button[aria-pressed="true"] span { background: var(--amber); }
+@media (max-height:679px) {
+  .matrix-track[data-carousel="true"] .work-header { margin-bottom: 12px; }
+  .matrix-track[data-carousel="true"] .work-header h2 { font-size: 26px; }
+  .matrix-track[data-carousel="true"] .work-header .eyebrow { font-size: 9px; margin-bottom: 8px; }
+  .matrix-track[data-carousel="true"] .matrix-toolbar { margin-bottom: 10px; }
+  .matrix-track[data-carousel="true"] .matrix-pagination { margin-top: 8px; }
+  .matrix-track[data-carousel="true"] .matrix-deck { height: max(160px,calc(100svh - 270px)); }
+}
 @media (max-width:760px) {
   .matrix-track[data-carousel="true"] .matrix-stage { top: 84px; }
   .matrix-track[data-carousel="true"] .matrix-toolbar { flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
@@ -167,6 +175,13 @@ h2 { font-size: clamp(27px,3.4vw,53px); line-height: 1.12; letter-spacing: -1.8p
   .matrix-track[data-carousel="true"] .project-body h3 { font-size: 23px; margin-bottom: 10px; }
   .matrix-track[data-carousel="true"] .project-description { font-size: 14px; margin-bottom: 14px; }
   .matrix-track[data-carousel="true"] .project-category { font-size: 9px; margin-bottom: 8px; }
+}
+@media (max-width:760px) and (max-height:679px) {
+  .matrix-track[data-carousel="true"] .matrix-deck { height: max(160px,calc(100svh - 290px)); }
+  .matrix-track[data-carousel="true"] .project-card { grid-template-rows: 35% 65%; }
+  .matrix-track[data-carousel="true"] .project-body { padding: 12px 18px; }
+  .matrix-track[data-carousel="true"] .project-body h3 { font-size: 20px; margin-bottom: 8px; }
+  .matrix-track[data-carousel="true"] .project-description { font-size: 12px; line-height: 1.5; margin-bottom: 10px; }
 }
 /* EXPERTISE, ABOUT, CONTACT, FOOTER */
 .portfolio-section { max-width: 1680px; margin: auto; padding: 100px 6% 120px; border-top: 1px solid var(--line); }
