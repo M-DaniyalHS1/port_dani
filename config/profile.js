@@ -29,7 +29,7 @@ export const expertise = [
     evidence: 'Dani Blogs / Physical AI textbook',
   },
   {
-    id: 'ai', title: 'AI Agent Developer', symbol: '03',
+    id: 'ai', title: 'AI Agent Development', symbol: '03',
     description: 'AI agent development, RAG chatbots, AI chatbots, and voice agents.',
     technologies: ['OpenAI Agents SDK', 'TTS', 'STT', 'LLM Integration', 'Tool Calling', 'Agent Orchestration'],
     evidence: 'Jarvis / Dani Blogs / Physical AI textbook',
