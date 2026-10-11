@@ -17,7 +17,7 @@ export default function PointerInteractions() {
     const modified = new Set();
     let magnet = null, card = null, frame = 0;
     let x = 0, y = 0, targetX = 0, targetY = 0, initialized = false, previous = 0;
-    const selector = '.button:not(:disabled),.nav-contact,.project-links a,.matrix-controls button:not(:disabled)';
+    const selector = 'a[href],button:not(:disabled),summary,[role="button"]';
     function release(element) {
       if (!element) return;
       element.style.removeProperty('--magnet-x');
@@ -28,6 +28,7 @@ export default function PointerInteractions() {
     function reset() {
       cancelAnimationFrame(frame); frame = 0; initialized = false;
       cursor.dataset.visible = 'false';
+      delete document.documentElement.dataset.pointerInteractions;
       card?.removeAttribute('data-targeting'); card = null;
       modified.forEach(release); magnet = null;
     }
@@ -40,15 +41,17 @@ export default function PointerInteractions() {
       if (Math.hypot(targetX - x, targetY - y) > .1) frame = requestAnimationFrame(render);
     }
     function move(event) {
-      if (event.pointerType !== 'mouse' || !finePointer.matches || getMotionSnapshot() || document.hidden) return reset();
+      if (event.pointerType !== 'mouse' || !finePointer.matches || getMotionSnapshot() || document.hidden || window.matchMedia('(forced-colors:active)').matches) return reset();
+      if (event.target.closest('input,textarea,select,[contenteditable="true"],video')) return reset();
       const nextCard = event.target.closest('.project-card');
-      const nextMagnet = event.target.closest(selector);
+      const interactive = event.target.closest(selector);
+      const nextMagnet = interactive?.matches('.portrait-trigger,[aria-disabled="true"]') ? null : interactive;
       if (card !== nextCard) { card?.removeAttribute('data-targeting'); card = nextCard; }
       if (magnet !== nextMagnet) { release(magnet); magnet = nextMagnet; }
       card?.setAttribute('data-targeting', 'true');
-      if (!card && !magnet) { reset(); return; }
-      const interactive = event.target.closest('a,button,summary');
-      cursor.dataset.mode = card && !interactive ? 'target' : 'button';
+      document.documentElement.dataset.pointerInteractions = 'true';
+      cursor.dataset.mode = 'target';
+      cursor.dataset.inspect = String(!!card && !interactive);
       cursor.dataset.visible = 'true';
       targetX = event.clientX; targetY = event.clientY;
       if (!initialized) { x = targetX; y = targetY; initialized = true; }
