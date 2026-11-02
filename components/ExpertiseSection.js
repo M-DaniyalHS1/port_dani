@@ -1,4 +1,5 @@
 import { expertise } from '../config/profile';
+import { TechTag } from './TechIcon';
 
 export default function ExpertiseSection() {
   return (
@@ -14,7 +15,7 @@ export default function ExpertiseSection() {
             <div><h3>{item.title}</h3><p>{item.description}</p></div>
             <div>
               <ul className="project-technologies" aria-label={`${item.title} technologies`}>
-                {item.technologies.map((technology) => <li key={technology}>{technology}</li>)}
+                {item.technologies.map((technology) => <TechTag key={technology} name={technology} />)}
               </ul>
               <p className="expertise-evidence">Applied in {item.evidence}</p>
             </div>
