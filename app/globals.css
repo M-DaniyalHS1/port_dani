@@ -426,3 +426,22 @@ html[data-motion="off"] .project-card::after { display: none; }
 .matrix-track:not([data-carousel="true"]) .project-body { flex: 1; display: flex; flex-direction: column; }
 .matrix-track:not([data-carousel="true"]) .project-details { min-width: 0; }
 .matrix-track:not([data-carousel="true"]) .project-links { margin-top: auto; padding-top: 24px; }
+.tech-icon { display: inline-grid; place-items: center; flex: none; line-height: 0; vertical-align: middle; }
+.tech-icon svg { width: 1.15em; height: 1.15em; overflow: visible; }
+.project-technologies li.tech-tag { display: inline-flex; align-items: center; gap: 8px; transition: border-color .25s ease, color .25s ease, transform .25s ease, box-shadow .25s ease; }
+.project-technologies .tech-icon svg { width: 16px; height: 16px; }
+.project-technologies li.tech-tag .tech-icon { transition: transform .25s ease; }
+@media (hover:hover) { .project-technologies li.tech-tag:hover { color: var(--text); border-color: color-mix(in srgb,var(--icon-color,var(--amber)) 60%,transparent); } }
+@media (prefers-reduced-motion:no-preference) {
+  @media (hover:hover) { html:not([data-motion="off"]) .project-technologies li.tech-tag:hover { transform: translateY(-2px); box-shadow: 0 6px 18px color-mix(in srgb,var(--icon-color,var(--amber)) 22%,transparent), 0 0 14px color-mix(in srgb,var(--icon-color,var(--amber)) 14%,transparent); } html:not([data-motion="off"]) .project-technologies li.tech-tag:hover .tech-icon { transform: scale(1.12) rotate(-6deg); } html:not([data-motion="off"]) .social-links a:hover .social-icon { border-color: color-mix(in srgb,var(--icon-color,var(--amber)) 60%,transparent); background-color: color-mix(in srgb,var(--icon-color,var(--amber)) 10%,transparent); box-shadow: 0 6px 20px color-mix(in srgb,var(--icon-color,var(--amber)) 28%,transparent), 0 0 18px color-mix(in srgb,var(--icon-color,var(--amber)) 18%,transparent); } }
+  html:not([data-motion="off"]) .social-links a:focus-visible .social-icon { border-color: color-mix(in srgb,var(--icon-color,var(--amber)) 60%,transparent); background-color: color-mix(in srgb,var(--icon-color,var(--amber)) 10%,transparent); box-shadow: 0 6px 20px color-mix(in srgb,var(--icon-color,var(--amber)) 28%,transparent), 0 0 18px color-mix(in srgb,var(--icon-color,var(--amber)) 18%,transparent); }
+  html:not([data-motion="off"]) :is(.expertise-row,.project-card)[data-revealed="true"] .tech-tag { animation: tag-enter .45s ease backwards; }
+  html:not([data-motion="off"]) .tech-tag:nth-child(2) { animation-delay: 60ms; }
+  html:not([data-motion="off"]) .tech-tag:nth-child(3) { animation-delay: 120ms; }
+  html:not([data-motion="off"]) .tech-tag:nth-child(4) { animation-delay: 180ms; }
+  html:not([data-motion="off"]) .tech-tag:nth-child(5) { animation-delay: 240ms; }
+  html:not([data-motion="off"]) .tech-tag:nth-child(6) { animation-delay: 300ms; }
+  html:not([data-motion="off"]) .tech-tag:nth-child(n+7) { animation-delay: 360ms; }
+}
+@keyframes tag-enter { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@media (forced-colors:active) { .tech-icon path:not([fill="none"]) { fill: currentColor; } .tech-icon path[stroke] { stroke: currentColor; } .project-technologies li.tech-tag:hover { border-color: Highlight; box-shadow: none; } }

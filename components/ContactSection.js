@@ -1,5 +1,6 @@
 import { profile } from '../config/profile';
 import SocialIcon from './SocialIcon';
+import TechIcon from './TechIcon';
 
 export default function ContactSection() {
   if (!profile.contact) return null;
@@ -17,13 +18,13 @@ export default function ContactSection() {
           {profile.contact.href && (
             <a href={profile.contact.href}>
               <SocialIcon name="email" />
-              {profile.contact.label} <span aria-hidden="true">&#8599;</span>
+              {profile.contact.label} <span aria-hidden="true"><TechIcon name="arrow-up-right" /></span>
             </a>
           )}
           {profile.socials.map((social) => (
             <a key={social.href} href={social.href}>
               <SocialIcon name={social.icon} />
-              {social.label} <span aria-hidden="true">&#8599;</span>
+              {social.label} <span aria-hidden="true"><TechIcon name="arrow-up-right" /></span>
             </a>
           ))}
         </nav>

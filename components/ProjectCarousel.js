@@ -2,6 +2,7 @@
 
 import { Children, useEffect, useRef, useState } from 'react';
 import { getMotionSnapshot, subscribeMotion } from '../lib/motion';
+import TechIcon from './TechIcon';
 
 export default function ProjectCarousel({ children, header, names }) {
   const track = useRef(null);
@@ -77,7 +78,7 @@ export default function ProjectCarousel({ children, header, names }) {
         {header}
         <div className="matrix-toolbar">
           <p>{enabled ? <>SCROLL TO ADVANCE &middot; CLICK TO INSPECT</> : <>SELECTED PROJECTS &middot; CLICK TO INSPECT</>}</p>
-          {enabled && <div className="matrix-controls"><button type="button" onClick={() => advance(active - 1)} disabled={active === 0} aria-label="Previous project">&larr;</button><span aria-live="polite" aria-atomic="true">P/{String(active + 1).padStart(2, '0')} <span className="matrix-total">/ {String(panels.length).padStart(2, '0')}</span><span className="sr-only">: {names[active]}</span></span><button type="button" onClick={() => advance(active + 1)} disabled={active === panels.length - 1} aria-label="Next project">&rarr;</button></div>}
+          {enabled && <div className="matrix-controls"><button type="button" onClick={() => advance(active - 1)} disabled={active === 0} aria-label="Previous project"><TechIcon name="arrow-left" /></button><span aria-live="polite" aria-atomic="true">P/{String(active + 1).padStart(2, '0')} <span className="matrix-total">/ {String(panels.length).padStart(2, '0')}</span><span className="sr-only">: {names[active]}</span></span><button type="button" onClick={() => advance(active + 1)} disabled={active === panels.length - 1} aria-label="Next project"><TechIcon name="arrow-right" /></button></div>}
         </div>
         <div className="work-grid matrix-deck">
           {panels.map((panel, index) => <div key={names[index]} className="matrix-panel" inert={enabled && index !== active} aria-hidden={enabled && index !== active ? true : undefined}>{panel}</div>)}

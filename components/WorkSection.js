@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { projects } from '../config/projects';
 import ProjectCard from './ProjectCard';
 import ProjectCarousel from './ProjectCarousel';
+import TechIcon, { TechTag } from './TechIcon';
 
 export default function WorkSection() {
   if (!projects.length) return null;
@@ -46,7 +47,7 @@ export default function WorkSection() {
                   </ul>
                   <p className="project-role"><span>ROLE</span> {project.role}</p>
                   <ul className="project-technologies" aria-label={`${project.name} technologies`}>
-                    {project.technologies.map((technology) => <li key={technology}>{technology}</li>)}
+                    {project.technologies.map((technology) => <TechTag key={technology} name={technology} />)}
                   </ul>
                   {project.deployment && <p className="project-deployment">Deployed on {project.deployment}</p>}
                   {project.caseStudy && (
@@ -60,8 +61,8 @@ export default function WorkSection() {
               </details>
               {(project.liveUrl || project.repositoryUrl) && (
                 <div className="project-links">
-                  {project.liveUrl && <a href={project.liveUrl} aria-label={`View ${project.name} live`}>View live <span aria-hidden="true">↗</span></a>}
-                  {project.repositoryUrl && <a href={project.repositoryUrl} aria-label={`View source for ${project.name}`}>Source code <span aria-hidden="true">↗</span></a>}
+                  {project.liveUrl && <a href={project.liveUrl} aria-label={`View ${project.name} live`}>View live <span aria-hidden="true"><TechIcon name="arrow-up-right" /></span></a>}
+                  {project.repositoryUrl && <a href={project.repositoryUrl} aria-label={`View source for ${project.name}`}>Source code <span aria-hidden="true"><TechIcon name="arrow-up-right" /></span></a>}
                 </div>
               )}
             </div>
