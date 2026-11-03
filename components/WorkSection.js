@@ -2,7 +2,8 @@ import Image from 'next/image';
 import { projects } from '../config/projects';
 import ProjectCard from './ProjectCard';
 import ProjectCarousel from './ProjectCarousel';
-import TechIcon, { TechTag } from './TechIcon';
+import ProjectDetails from './ProjectDetails';
+import TechIcon, { TechTag, iconStyle } from './TechIcon';
 
 export default function WorkSection() {
   if (!projects.length) return null;
@@ -29,42 +30,44 @@ export default function WorkSection() {
               </div>
             )}
             <div className="project-body">
-              <p className="project-index" aria-hidden="true">{String(index + 1).padStart(2, '0')} /</p>
-              <p className="project-category">{project.category}</p>
+              <div className="project-head">
+                <p className="project-index" aria-hidden="true">{String(index + 1).padStart(2, '0')} /</p>
+                <p className="project-category">{project.category}</p>
+              </div>
               <h3 id={`project-${project.id}`}>{project.name}</h3>
               <p className="project-description">{project.summary || project.description}</p>
-              <details className="project-details">
-                <summary>
-                  <span className="read-more-label">Read more</span>
-                  <span className="read-less-label">Read less</span>
-                  <span className="sr-only"> about {project.name}</span>
-                  <span className="project-details-symbol" aria-hidden="true">+</span>
-                </summary>
-                <div className="project-detail-content">
-                  <p className="project-description">{project.description}</p>
-                  <ul className="project-features">
-                    {project.features.map((feature) => <li key={feature}>{feature}</li>)}
-                  </ul>
-                  <p className="project-role"><span>ROLE</span> {project.role}</p>
-                  <ul className="project-technologies" aria-label={`${project.name} technologies`}>
-                    {project.technologies.map((technology) => <TechTag key={technology} name={technology} />)}
-                  </ul>
-                  {project.deployment && <p className="project-deployment">Deployed on {project.deployment}</p>}
-                  {project.caseStudy && (
-                    <dl>
-                      <dt>Design goal</dt><dd>{project.caseStudy.goal}</dd>
-                      <dt>My contribution</dt><dd>{project.caseStudy.contribution}</dd>
-                      <dt>Solution</dt><dd>{project.caseStudy.solution}</dd>
-                    </dl>
-                  )}
-                </div>
-              </details>
-              {(project.liveUrl || project.repositoryUrl) && (
+              <ul className="project-technologies project-preview" aria-label={`${project.name} key technologies`}>
+                {project.technologies.slice(0, 4).map((technology) => (
+                  <li key={technology} className="tech-tag tech-chip" style={iconStyle(technology)} title={technology} aria-label={technology}>
+                    <TechIcon name={technology} />
+                    <span className="sr-only">{technology}</span>
+                  </li>
+                ))}
+                {project.technologies.length > 4 && <li className="project-more" title={`${project.technologies.length - 4} more technologies`}>+{project.technologies.length - 4}<span className="sr-only"> more technologies</span></li>}
+              </ul>
+              <ProjectDetails id={project.id} name={project.name} links={(project.liveUrl || project.repositoryUrl) && (
                 <div className="project-links">
                   {project.liveUrl && <a href={project.liveUrl} aria-label={`View ${project.name} live`}>View live <span aria-hidden="true"><TechIcon name="arrow-up-right" /></span></a>}
                   {project.repositoryUrl && <a href={project.repositoryUrl} aria-label={`View source for ${project.name}`}>Source code <span aria-hidden="true"><TechIcon name="arrow-up-right" /></span></a>}
                 </div>
-              )}
+              )}>
+                <p className="project-description">{project.description}</p>
+                <ul className="project-features">
+                  {project.features.map((feature) => <li key={feature}>{feature}</li>)}
+                </ul>
+                <p className="project-role"><span>ROLE</span> {project.role}</p>
+                <ul className="project-technologies" aria-label={`${project.name} technologies`}>
+                  {project.technologies.map((technology) => <TechTag key={technology} name={technology} />)}
+                </ul>
+                {project.deployment && <p className="project-deployment">Deployed on {project.deployment}</p>}
+                {project.caseStudy && (
+                  <dl>
+                    <dt>Design goal</dt><dd>{project.caseStudy.goal}</dd>
+                    <dt>My contribution</dt><dd>{project.caseStudy.contribution}</dd>
+                    <dt>Solution</dt><dd>{project.caseStudy.solution}</dd>
+                  </dl>
+                )}
+              </ProjectDetails>
             </div>
           </ProjectCard>
         ))}
